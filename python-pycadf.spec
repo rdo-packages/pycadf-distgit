@@ -10,7 +10,7 @@
 
 Name:           python-%{pypi_name}
 Version:        0.4.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        DMTF Cloud Audit (CADF) data model
 
 License:        ASL 2.0
@@ -19,6 +19,7 @@ Source0:        https://pypi.python.org/packages/source/p/%{pypi_name}/%{pypi_na
 BuildArch:      noarch
 
 BuildRequires:  python2-devel
+BuildRequires:  python-setuptools
 BuildRequires:  python-pbr
 
 Requires:       python-babel
@@ -60,5 +61,8 @@ rm -rf %{buildroot}/%{python_sitelib}/%{pypi_name}/tests
 
 
 %changelog
+* Mon Apr 07 2014 Lon Hohberger <lhh@redhat.com> - 0.4.1-3
+- Add python-setuptools build requirement
+
 * Fri Mar 07 2014 Padraig Brady <P@draigBrady.com> - 0.4.1-2
 - Initial package.
