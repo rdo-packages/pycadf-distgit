@@ -9,8 +9,8 @@
 %endif
 
 Name:           python-%{pypi_name}
-Version:        0.4.1
-Release:        4%{?dist}
+Version:        0.5.1
+Release:        1%{?dist}
 Summary:        DMTF Cloud Audit (CADF) data model
 
 License:        ASL 2.0
@@ -28,7 +28,7 @@ Requires:       python-netaddr
 Requires:       python-oslo-config >= 1:1.2.0
 Requires:       python-oslo-messaging
 Requires:       pytz
-Requires:       python-six >= 1.4.1
+Requires:       python-six >= 1.6.0
 Requires:       python-webob >= 1.2.3
 
 %description
@@ -61,6 +61,9 @@ rm -rf %{buildroot}/%{python_sitelib}/%{pypi_name}/tests
 
 
 %changelog
+* Fri Jun 13 2014 Pádraig Brady <pbrady@redhat.com> - 0.5.1-1
+- Latest upstream
+
 * Sat Jun 07 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.4.1-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
 
