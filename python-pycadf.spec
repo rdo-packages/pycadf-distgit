@@ -25,10 +25,11 @@ BuildRequires:  python-pbr
 Requires:       python-babel
 Requires:       python-iso8601
 Requires:       python-netaddr
-Requires:       python-oslo-config >= 1:1.2.0
-Requires:       python-oslo-messaging
+Requires:       python-oslo-config >= 1:1.4.0.0
+Requires:       python-oslo-messaging > 1.4.0.0
+Requires:       posix_ipc
 Requires:       pytz
-Requires:       python-six >= 1.6.0
+Requires:       python-six >= 1.7.0
 Requires:       python-webob >= 1.2.3
 
 %description
