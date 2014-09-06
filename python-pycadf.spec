@@ -9,7 +9,7 @@
 %endif
 
 Name:           python-%{pypi_name}
-Version:        0.5.1
+Version:        0.6.0
 Release:        1%{?dist}
 Summary:        DMTF Cloud Audit (CADF) data model
 
@@ -61,6 +61,9 @@ rm -rf %{buildroot}/%{python_sitelib}/%{pypi_name}/tests
 
 
 %changelog
+* Sat Sep 06 2014 Pádraig Brady <pbrady@redhat.com> - 0.6.0-1
+- Latest upstream
+
 * Fri Jun 13 2014 Pádraig Brady <pbrady@redhat.com> - 0.5.1-1
 - Latest upstream
 
