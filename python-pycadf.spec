@@ -10,7 +10,7 @@
 
 Name:           python-%{pypi_name}
 Version:        0.6.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        DMTF Cloud Audit (CADF) data model
 
 License:        ASL 2.0
@@ -26,8 +26,8 @@ Requires:       python-babel
 Requires:       python-iso8601
 Requires:       python-netaddr
 Requires:       python-oslo-config >= 1:1.4.0.0
-Requires:       python-oslo-messaging > 1.4.0.0
-Requires:       posix_ipc
+Requires:       python-oslo-messaging >= 1.4.0.0
+Requires:       python-posix_ipc
 Requires:       pytz
 Requires:       python-six >= 1.7.0
 Requires:       python-webob >= 1.2.3
@@ -62,6 +62,9 @@ rm -rf %{buildroot}/%{python_sitelib}/%{pypi_name}/tests
 
 
 %changelog
+* Wed Sep 17 2014 Alan Pevec <apevec@redhat.com> - 0.6.0-2
+- update dependencies
+
 * Sat Sep 06 2014 Pádraig Brady <pbrady@redhat.com> - 0.6.0-1
 - Latest upstream
 
