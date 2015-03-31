@@ -9,8 +9,8 @@
 %endif
 
 Name:           python-%{pypi_name}
-Version:        0.6.0
-Release:        2%{?dist}
+Version:        0.8.0
+Release:        1%{?dist}
 Summary:        DMTF Cloud Audit (CADF) data model
 
 License:        ASL 2.0
@@ -25,26 +25,24 @@ BuildRequires:  python-pbr
 Requires:       python-babel
 Requires:       python-iso8601
 Requires:       python-netaddr
-Requires:       python-oslo-config >= 1:1.4.0.0
+Requires:       python-oslo-config >= 1:1.9.3
+Requires:       python-oslo-context
+Requires:       python-oslo-i18n
 Requires:       python-oslo-messaging >= 1.4.0.0
+Requires:       python-oslo-serialization
 Requires:       python-posix_ipc
 Requires:       pytz
-Requires:       python-six >= 1.7.0
+Requires:       python-six >= 1.9.0
 Requires:       python-webob >= 1.2.3
 
 %description
 DMTF Cloud Audit (CADF) data model
 
-
 %prep
 %setup -q -n %{pypi_name}-%{version}
-# Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
-
 
 %build
 %{__python2} setup.py build
-
 
 %install
 %{__python2} setup.py install --skip-build --root %{buildroot}
@@ -54,7 +52,8 @@ rm -rf %{buildroot}/%{python_sitelib}/%{pypi_name}/tests
 
 
 %files
-%doc README.rst LICENSE
+%license LICENSE
+%doc README.rst
 %dir %{_sysconfdir}/%{pypi_name}
 %config(noreplace) %{_sysconfdir}/%{pypi_name}/*.conf
 %{python2_sitelib}/%{pypi_name}
@@ -62,6 +61,9 @@ rm -rf %{buildroot}/%{python_sitelib}/%{pypi_name}/tests
 
 
 %changelog
+* Tue Mar 31 2015 Alan Pevec <apevec@redhat.com> - 0.8.0-1
+- new version
+
 * Wed Sep 17 2014 Alan Pevec <apevec@redhat.com> - 0.6.0-2
 - update dependencies
 
