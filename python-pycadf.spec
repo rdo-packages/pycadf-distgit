@@ -9,8 +9,8 @@
 %endif
 
 Name:           python-%{pypi_name}
-Version:        0.8.0
-Release:        2%{?dist}
+Version:        1.0.0
+Release:        1%{?dist}
 Summary:        DMTF Cloud Audit (CADF) data model
 
 License:        ASL 2.0
@@ -25,7 +25,7 @@ BuildRequires:  python-pbr
 Requires:       python-babel
 Requires:       python-iso8601
 Requires:       python-netaddr
-Requires:       python-oslo-config >= 1:1.9.3
+Requires:       python-oslo-config >= 2:1.11.0
 Requires:       python-oslo-context
 Requires:       python-oslo-i18n
 Requires:       python-oslo-messaging >= 1.4.0.0
@@ -61,6 +61,9 @@ rm -rf %{buildroot}/%{python_sitelib}/%{pypi_name}/tests
 
 
 %changelog
+* Tue Aug 18 2015 Alan Pevec <alan.pevec@redhat.com> 1.0.0-1
+- Update to upstream 1.0.0
+
 * Thu Jun 18 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.8.0-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
 
