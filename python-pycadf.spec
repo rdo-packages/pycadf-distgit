@@ -9,7 +9,7 @@
 %endif
 
 Name:           python-%{pypi_name}
-Version:        1.0.0
+Version:        1.1.0
 Release:        1%{?dist}
 Summary:        DMTF Cloud Audit (CADF) data model
 
@@ -22,18 +22,11 @@ BuildRequires:  python2-devel
 BuildRequires:  python-setuptools
 BuildRequires:  python-pbr
 
-Requires:       python-babel
-Requires:       python-iso8601
-Requires:       python-netaddr
-Requires:       python-oslo-config >= 2:1.11.0
-Requires:       python-oslo-context
-Requires:       python-oslo-i18n
-Requires:       python-oslo-messaging >= 1.4.0.0
-Requires:       python-oslo-serialization
-Requires:       python-posix_ipc
+Requires:       python-oslo-config >= 2:2.1.0
+Requires:       python-oslo-serialization >= 1.4.0
 Requires:       pytz
 Requires:       python-six >= 1.9.0
-Requires:       python-webob >= 1.2.3
+
 
 %description
 DMTF Cloud Audit (CADF) data model
@@ -61,6 +54,9 @@ rm -rf %{buildroot}/%{python_sitelib}/%{pypi_name}/tests
 
 
 %changelog
+* Fri Sep 18 2015 Alan Pevec <alan.pevec@redhat.com> 1.1.0-1
+- Update to upstream 1.1.0
+
 * Tue Aug 18 2015 Alan Pevec <alan.pevec@redhat.com> 1.0.0-1
 - Update to upstream 1.0.0
 
