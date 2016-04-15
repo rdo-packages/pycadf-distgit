@@ -8,9 +8,11 @@
 %{!?python2_sitearch: %global python2_sitearch %(%{__python2} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(1))")}
 %endif
 
+%{!?upstream_version: %global upstream_version %{version}%{?milestone}}
+
 Name:           python-%{pypi_name}
-Version:        1.1.0
-Release:        2%{?dist}
+Version:        2.1.0
+Release:        1%{?dist}
 Summary:        DMTF Cloud Audit (CADF) data model
 
 License:        ASL 2.0
@@ -22,20 +24,28 @@ BuildRequires:  python2-devel
 BuildRequires:  python-setuptools
 BuildRequires:  python-pbr
 
-Requires:       python-oslo-config >= 2:2.1.0
-Requires:       python-oslo-serialization >= 1.4.0
+Requires:       python-babel
+Requires:       python-iso8601
+Requires:       python-netaddr
+Requires:       python-oslo-config >= 1:1.2.0
+Requires:       python-oslo-messaging
 Requires:       pytz
-Requires:       python-six >= 1.9.0
-
+Requires:       python-six >= 1.6.0
+Requires:       python-webob >= 1.2.3
 
 %description
 DMTF Cloud Audit (CADF) data model
 
+
 %prep
-%setup -q -n %{pypi_name}-%{version}
+%setup -q -n %{pypi_name}-%{upstream_version}
+# Remove bundled egg-info
+rm -rf %{pypi_name}.egg-info
+
 
 %build
 %{__python2} setup.py build
+
 
 %install
 %{__python2} setup.py install --skip-build --root %{buildroot}
@@ -45,35 +55,16 @@ rm -rf %{buildroot}/%{python_sitelib}/%{pypi_name}/tests
 
 
 %files
-%license LICENSE
-%doc README.rst
+%doc README.rst LICENSE
 %dir %{_sysconfdir}/%{pypi_name}
 %config(noreplace) %{_sysconfdir}/%{pypi_name}/*.conf
 %{python2_sitelib}/%{pypi_name}
-%{python2_sitelib}/%{pypi_name}-%{version}-py?.?.egg-info
+%{python2_sitelib}/%{pypi_name}-%{upstream_version}-py?.?.egg-info
 
 
 %changelog
-* Thu Feb 04 2016 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.0-2
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
-
-* Fri Sep 18 2015 Alan Pevec <alan.pevec@redhat.com> 1.1.0-1
-- Update to upstream 1.1.0
-
-* Tue Aug 18 2015 Alan Pevec <alan.pevec@redhat.com> 1.0.0-1
-- Update to upstream 1.0.0
-
-* Thu Jun 18 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.8.0-2
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
-
-* Tue Mar 31 2015 Alan Pevec <apevec@redhat.com> - 0.8.0-1
-- new version
-
-* Wed Sep 17 2014 Alan Pevec <apevec@redhat.com> - 0.6.0-2
-- update dependencies
-
-* Sat Sep 06 2014 Pádraig Brady <pbrady@redhat.com> - 0.6.0-1
-- Latest upstream
+* Wed Mar 23 2016 Haikel Guemar <hguemar@fedoraproject.org> 2.1.0-1
+- Update to 2.1.0
 
 * Fri Jun 13 2014 Pádraig Brady <pbrady@redhat.com> - 0.5.1-1
 - Latest upstream
