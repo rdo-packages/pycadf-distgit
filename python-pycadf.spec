@@ -11,7 +11,7 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 Name:           python-%{pypi_name}
-Version:        2.1.0
+Version:        2.2.0
 Release:        1%{?dist}
 Summary:        DMTF Cloud Audit (CADF) data model
 
@@ -63,6 +63,9 @@ rm -rf %{buildroot}/%{python_sitelib}/%{pypi_name}/tests
 
 
 %changelog
+* Sun Jun 26 2016 Haikel Guemar <hguemar@fedoraproject.org> 2.2.0-1
+- Update to 2.2.0
+
 * Wed Mar 23 2016 Haikel Guemar <hguemar@fedoraproject.org> 2.1.0-1
 - Update to 2.1.0
 
