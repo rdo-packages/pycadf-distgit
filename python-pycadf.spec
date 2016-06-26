@@ -1,74 +1,122 @@
 # Created by pyp2rpm-1.0.1
-%global pypi_name pycadf
+%global sname pycadf
 
-# see https://fedoraproject.org/wiki/Packaging:Python#Macros
-%if 0%{?rhel} && 0%{?rhel} <= 6
-%{!?__python2: %global __python2 /usr/bin/python2}
-%{!?python2_sitelib: %global python2_sitelib %(%{__python2} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
-%{!?python2_sitearch: %global python2_sitearch %(%{__python2} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(1))")}
+%{!?upstream_version: %global upstream_version %{version}%{?milestone}}
+
+%if 0%{?fedora}
+%global with_python3 1
 %endif
 
-Name:           python-%{pypi_name}
-Version:        0.5.1
-Release:        1%{?dist}
+Name:           python-%{sname}
+Version:        XXX
+Release:        XXX
 Summary:        DMTF Cloud Audit (CADF) data model
 
 License:        ASL 2.0
 URL:            https://launchpad.net/pycadf
-Source0:        https://pypi.python.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://pypi.python.org/packages/source/p/%{sname}/%{sname}-%{version}.tar.gz
 BuildArch:      noarch
+
+
+%description
+DMTF Cloud Audit (CADF) data model
+
+
+%package -n python2-%{sname}
+Summary:        DMTF Cloud Audit (CADF) data model
 
 BuildRequires:  python2-devel
 BuildRequires:  python-setuptools
 BuildRequires:  python-pbr
 
 Requires:       python-babel
+Requires:       python-debtcollector >= 1.2.0
 Requires:       python-iso8601
 Requires:       python-netaddr
-Requires:       python-oslo-config >= 1:1.2.0
+Requires:       python-oslo-config >= 1:3.7.0
 Requires:       python-oslo-messaging
+Requires:       python-oslo-serialization >= 1.10.0
 Requires:       pytz
-Requires:       python-six >= 1.6.0
+Requires:       python-six >= 1.9.0
 Requires:       python-webob >= 1.2.3
+Requires:       python-%{sname}-common = %{version}-%{release}
 
-%description
+%{?python_provide:%python_provide python2-%{sname}}
+
+%description -n python2-%{sname}
 DMTF Cloud Audit (CADF) data model
+
+%if 0%{?with_python3}
+%package -n python3-%{sname}
+Summary:        DMTF Cloud Audit (CADF) data model
+
+BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-pbr
+
+Requires:       python3-babel
+Requires:       python3-debtcollector >= 1.2.0
+Requires:       python3-iso8601
+Requires:       python3-netaddr
+Requires:       python3-oslo-config >= 1:3.7.0
+Requires:       python3-oslo-messaging
+Requires:       python3-oslo-serialization >= 1.10.0
+Requires:       python3-pytz
+Requires:       python3-six >= 1.9.0
+Requires:       python3-webob >= 1.2.3
+Requires:       python-%{sname}-common = %{version}-%{release}
+
+%{?python_provide:%python_provide python3-%{sname}}
+
+%description -n python3-%{sname}
+DMTF Cloud Audit (CADF) data model
+%endif
+
+%package -n python-%{sname}-common
+Summary:        DMTF Cloud Audit (CADF) data model
+
+%description -n python-%{sname}-common
+DMTF Cloud Audit (CADF) data model (common data file)
 
 
 %prep
-%setup -q -n %{pypi_name}-%{upstream_version}
+%setup -q -n %{sname}-%{upstream_version}
 # Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
+rm -rf %{sname}.egg-info
 
 
 %build
-%{__python2} setup.py build
+%py2_build
+%if 0%{?with_python3}
+%py3_build
+%endif
 
 
 %install
-%{__python2} setup.py install --skip-build --root %{buildroot}
+%py2_install
+%if 0%{?with_python3}
+%py3_install
+%endif
+
 mkdir -p %{buildroot}/%{_sysconfdir}
-mv %{buildroot}/usr/etc/%{pypi_name} %{buildroot}/%{_sysconfdir}/
-rm -rf %{buildroot}/%{python_sitelib}/%{pypi_name}/tests
+mv %{buildroot}/usr/etc/%{sname} %{buildroot}/%{_sysconfdir}/
 
 
-%files
-%doc README.rst LICENSE
-%dir %{_sysconfdir}/%{pypi_name}
-%config(noreplace) %{_sysconfdir}/%{pypi_name}/*.conf
-%{python2_sitelib}/%{pypi_name}
-%{python2_sitelib}/%{pypi_name}-%{upstream_version}-py?.?.egg-info
+%files -n python2-%{sname}
+%{python2_sitelib}/%{sname}
+%{python2_sitelib}/%{sname}-%{upstream_version}-py?.?.egg-info
+
+%if 0%{?with_python3}
+%files -n python3-%{sname}
+%{python3_sitelib}/%{sname}
+%{python3_sitelib}/%{sname}-%{upstream_version}-py?.?.egg-info
+%endif
+
+%files -n python-%{sname}-common
+%doc README.rst
+%license LICENSE
+%dir %{_sysconfdir}/%{sname}
+%config(noreplace) %{_sysconfdir}/%{sname}/*.conf
 
 
 %changelog
-* Fri Jun 13 2014 Pádraig Brady <pbrady@redhat.com> - 0.5.1-1
-- Latest upstream
-
-* Sat Jun 07 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.4.1-4
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
-
-* Mon Apr 07 2014 Lon Hohberger <lhh@redhat.com> - 0.4.1-3
-- Add python-setuptools build requirement
-
-* Fri Mar 07 2014 Padraig Brady <P@draigBrady.com> - 0.4.1-2
-- Initial package.
