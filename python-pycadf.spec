@@ -30,12 +30,12 @@ BuildRequires:  python-setuptools
 BuildRequires:  python-pbr
 
 Requires:       python-babel
-Requires:       python-debtcollector >= 1.2.0
+Requires:       python-debtcollector
 Requires:       python-iso8601
 Requires:       python-netaddr
-Requires:       python-oslo-config >= 1:3.7.0
+Requires:       python-oslo-config
 Requires:       python-oslo-messaging
-Requires:       python-oslo-serialization >= 1.10.0
+Requires:       python-oslo-serialization
 Requires:       pytz
 Requires:       python-six >= 1.9.0
 Requires:       python-webob >= 1.2.3
@@ -55,12 +55,12 @@ BuildRequires:  python3-setuptools
 BuildRequires:  python3-pbr
 
 Requires:       python3-babel
-Requires:       python3-debtcollector >= 1.2.0
+Requires:       python3-debtcollector
 Requires:       python3-iso8601
 Requires:       python3-netaddr
-Requires:       python3-oslo-config >= 1:3.7.0
+Requires:       python3-oslo-config
 Requires:       python3-oslo-messaging
-Requires:       python3-oslo-serialization >= 1.10.0
+Requires:       python3-oslo-serialization
 Requires:       python3-pytz
 Requires:       python3-six >= 1.9.0
 Requires:       python3-webob >= 1.2.3
