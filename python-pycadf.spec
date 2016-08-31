@@ -13,7 +13,7 @@ Release:        XXX
 Summary:        DMTF Cloud Audit (CADF) data model
 
 License:        ASL 2.0
-URL:            https://launchpad.net/pycadf
+URL:            https://github.com/openstack/pycadf
 Source0:        https://pypi.python.org/packages/source/p/%{sname}/%{sname}-%{version}.tar.gz
 BuildArch:      noarch
 
