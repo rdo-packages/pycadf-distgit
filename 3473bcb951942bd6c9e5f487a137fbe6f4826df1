@@ -16,6 +16,24 @@
       "revId": "3473bcb951942bd6c9e5f487a137fbe6f4826df1",
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "facab960_e24d46c6",
+        "filename": "python-pycadf.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 168
+      },
+      "writtenOn": "2016-08-31T22:31:57Z",
+      "side": 0,
+      "message": "That makes sense, if we wish to preserve some of the information, then leaving the original URL may be best.",
+      "parentUuid": "facab960_825f1a72",
+      "revId": "3473bcb951942bd6c9e5f487a137fbe6f4826df1",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
     }
   ]
 }
