@@ -8,8 +8,8 @@
 %endif
 
 Name:           python-%{sname}
-Version:        XXX
-Release:        XXX
+Version:        2.5.0
+Release:        1%{?dist}
 Summary:        DMTF Cloud Audit (CADF) data model
 
 License:        ASL 2.0
@@ -120,3 +120,6 @@ mv %{buildroot}/usr/etc/%{sname} %{buildroot}/%{_sysconfdir}/
 
 
 %changelog
+* Wed Feb 08 2017 Alfredo Moralejo <amoralej@redhat.com> 2.5.0-1
+- Update to 2.5.0
+
