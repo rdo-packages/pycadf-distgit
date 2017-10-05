@@ -7,6 +7,9 @@
 %global with_python3 1
 %endif
 
+%global common_desc DMTF Cloud Audit (CADF) data model
+
+
 Name:           python-%{sname}
 Version:        XXX
 Release:        XXX
@@ -19,7 +22,7 @@ BuildArch:      noarch
 
 
 %description
-DMTF Cloud Audit (CADF) data model
+%{common_desc}
 
 
 %package -n python2-%{sname}
@@ -44,7 +47,7 @@ Requires:       python-%{sname}-common = %{version}-%{release}
 %{?python_provide:%python_provide python2-%{sname}}
 
 %description -n python2-%{sname}
-DMTF Cloud Audit (CADF) data model
+%{common_desc}
 
 %if 0%{?with_python3}
 %package -n python3-%{sname}
@@ -69,14 +72,14 @@ Requires:       python-%{sname}-common = %{version}-%{release}
 %{?python_provide:%python_provide python3-%{sname}}
 
 %description -n python3-%{sname}
-DMTF Cloud Audit (CADF) data model
+%{common_desc}
 %endif
 
 %package -n python-%{sname}-common
 Summary:        DMTF Cloud Audit (CADF) data model
 
 %description -n python-%{sname}-common
-DMTF Cloud Audit (CADF) data model (common data file)
+%{common_desc}
 
 
 %prep
