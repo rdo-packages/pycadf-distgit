@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7aaa499b_13269eba",
+        "filename": "python-pycadf.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2018-02-12T09:55:30Z",
+      "side": 1,
+      "message": "This package is in fedora, should we convert to python2- requirements and as conditional when python2- are not available in RDO as done for other packages?",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 62
+      },
+      "revId": "46a725eac35868f9d226f9c8e74aa3c41c4cc47b",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
