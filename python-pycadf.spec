@@ -29,19 +29,14 @@ BuildArch:      noarch
 Summary:        DMTF Cloud Audit (CADF) data model
 
 BuildRequires:  python2-devel
-BuildRequires:  python-setuptools
-BuildRequires:  python-pbr
+BuildRequires:  python2-setuptools
+BuildRequires:  python2-pbr
 
-Requires:       python-babel
-Requires:       python-debtcollector
-Requires:       python-iso8601
-Requires:       python-netaddr
-Requires:       python-oslo-config
-Requires:       python-oslo-messaging
-Requires:       python-oslo-serialization
-Requires:       pytz
-Requires:       python-six >= 1.9.0
-Requires:       python-webob >= 1.2.3
+Requires:       python2-debtcollector >= 1.2.0
+Requires:       python2-oslo-config >= 2:5.1.0
+Requires:       python2-oslo-serialization >= 2.18.0
+Requires:       python2-pytz
+Requires:       python2-six >= 1.10.0
 Requires:       python-%{sname}-common = %{version}-%{release}
 
 %{?python_provide:%python_provide python2-%{sname}}
@@ -57,16 +52,11 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-pbr
 
-Requires:       python3-babel
-Requires:       python3-debtcollector
-Requires:       python3-iso8601
-Requires:       python3-netaddr
-Requires:       python3-oslo-config
-Requires:       python3-oslo-messaging
-Requires:       python3-oslo-serialization
+Requires:       python3-debtcollector >= 1.2.0
+Requires:       python3-oslo-config >= 2:5.1.0
+Requires:       python3-oslo-serialization >= 2.18.0
 Requires:       python3-pytz
-Requires:       python3-six >= 1.9.0
-Requires:       python3-webob >= 1.2.3
+Requires:       python3-six >= 1.10.0
 Requires:       python-%{sname}-common = %{version}-%{release}
 
 %{?python_provide:%python_provide python3-%{sname}}
