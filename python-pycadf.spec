@@ -33,7 +33,7 @@ BuildRequires:  python2-setuptools
 BuildRequires:  python2-pbr
 
 Requires:       python2-debtcollector >= 1.2.0
-Requires:       python2-oslo-config >= 2:5.1.0
+Requires:       python2-oslo-config >= 2:5.2.0
 Requires:       python2-oslo-serialization >= 2.18.0
 Requires:       python2-pytz
 Requires:       python2-six >= 1.10.0
@@ -53,7 +53,7 @@ BuildRequires:  python3-setuptools
 BuildRequires:  python3-pbr
 
 Requires:       python3-debtcollector >= 1.2.0
-Requires:       python3-oslo-config >= 2:5.1.0
+Requires:       python3-oslo-config >= 2:5.2.0
 Requires:       python3-oslo-serialization >= 2.18.0
 Requires:       python3-pytz
 Requires:       python3-six >= 1.10.0
