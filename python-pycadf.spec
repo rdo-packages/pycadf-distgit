@@ -8,7 +8,7 @@
 %endif
 
 Name:           python-%{sname}
-Version:        2.6.0
+Version:        2.6.1
 Release:        1%{?dist}
 Summary:        DMTF Cloud Audit (CADF) data model
 
@@ -120,6 +120,9 @@ mv %{buildroot}/usr/etc/%{sname} %{buildroot}/%{_sysconfdir}/
 
 
 %changelog
+* Wed Apr 24 2019 RDO <dev@lists.rdoproject.org> 2.6.1-1
+- Update to 2.6.1
+
 * Mon Aug 14 2017 Alfredo Moralejo <amoralej@redhat.com> 2.6.0-1
 - Update to 2.6.0
 
