@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1179a69_3a65be61",
+        "filename": "python-pycadf.spec",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2019-10-01T17:02:45Z",
+      "side": 1,
+      "message": "We should keep -common subpackage unversioned as it only contains config files.",
+      "range": {
+        "startLine": 53,
+        "startChar": 18,
+        "endLine": 53,
+        "endChar": 26
+      },
+      "revId": "9a801c3153e69323c298437765004cfad86652fd",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
