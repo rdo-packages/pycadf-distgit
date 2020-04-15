@@ -1,14 +1,3 @@
-# Macros for py2/py3 compatibility
-%if 0%{?fedora} || 0%{?rhel} > 7
-%global pyver %{python3_pkgversion}
-%else
-%global pyver 2
-%endif
-%global pyver_bin python%{pyver}
-%global pyver_sitelib %python%{pyver}_sitelib
-%global pyver_install %py%{pyver}_install
-%global pyver_build %py%{pyver}_build
-# End of macros for py2/py3 compatibility
 # Created by pyp2rpm-1.0.1
 %global sname pycadf
 
@@ -32,22 +21,22 @@ BuildArch:      noarch
 %{common_desc}
 
 
-%package -n python%{pyver}-%{sname}
+%package -n python3-%{sname}
 Summary:        DMTF Cloud Audit (CADF) data model
-%{?python_provide:%python_provide python%{pyver}-%{sname}}
+%{?python_provide:%python_provide python3-%{sname}}
 
-BuildRequires:  python%{pyver}-devel
-BuildRequires:  python%{pyver}-setuptools
-BuildRequires:  python%{pyver}-pbr
+BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-pbr
 
-Requires:       python%{pyver}-debtcollector >= 1.2.0
-Requires:       python%{pyver}-oslo-config >= 2:5.2.0
-Requires:       python%{pyver}-oslo-serialization >= 2.18.0
-Requires:       python%{pyver}-pytz
-Requires:       python%{pyver}-six >= 1.10.0
+Requires:       python3-debtcollector >= 1.2.0
+Requires:       python3-oslo-config >= 2:5.2.0
+Requires:       python3-oslo-serialization >= 2.18.0
+Requires:       python3-pytz
+Requires:       python3-six >= 1.10.0
 Requires:       python-%{sname}-common = %{version}-%{release}
 
-%description -n python%{pyver}-%{sname}
+%description -n python3-%{sname}
 %{common_desc}
 
 %package -n python-%{sname}-common
@@ -65,19 +54,19 @@ rm -rf %{sname}.egg-info
 
 
 %build
-%{pyver_build}
+%{py3_build}
 
 
 %install
-%{pyver_install}
+%{py3_install}
 
 mkdir -p %{buildroot}/%{_sysconfdir}
 mv %{buildroot}/usr/etc/%{sname} %{buildroot}/%{_sysconfdir}/
 
 
-%files -n python%{pyver}-%{sname}
-%{pyver_sitelib}/%{sname}
-%{pyver_sitelib}/%{sname}-%{upstream_version}-py?.?.egg-info
+%files -n python3-%{sname}
+%{python3_sitelib}/%{sname}
+%{python3_sitelib}/%{sname}-%{upstream_version}-py?.?.egg-info
 
 %files -n python-%{sname}-common
 %doc README.rst
