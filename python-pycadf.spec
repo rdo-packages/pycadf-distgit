@@ -66,7 +66,7 @@ mv %{buildroot}/usr/etc/%{sname} %{buildroot}/%{_sysconfdir}/
 
 %files -n python3-%{sname}
 %{python3_sitelib}/%{sname}
-%{python3_sitelib}/%{sname}-%{upstream_version}-py?.?.egg-info
+%{python3_sitelib}/%{sname}-%{upstream_version}-py%{python3_version}.egg-info
 
 %files -n python-%{sname}-common
 %doc README.rst
