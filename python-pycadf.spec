@@ -9,8 +9,8 @@
 
 
 Name:           python-%{sname}
-Version:        XXX
-Release:        XXX
+Version:        3.1.1
+Release:        1%{?dist}
 Summary:        DMTF Cloud Audit (CADF) data model
 
 License:        ASL 2.0
@@ -93,3 +93,6 @@ mv %{buildroot}/usr/etc/%{sname} %{buildroot}/%{_sysconfdir}/
 
 
 %changelog
+* Fri Mar 11 2022 RDO <dev@lists.rdoproject.org> 3.1.1-1
+- Update to 3.1.1
+
