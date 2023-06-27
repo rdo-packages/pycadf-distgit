@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "235ec736_b0cd5e94",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 635
+      },
+      "writtenOn": "2023-06-27T08:29:20Z",
+      "side": 1,
+      "message": "BR oslo-config and oslo-serialization are installing a bunch of deps which are ok",
+      "revId": "bc5e300d6c32bb4a5d5eb6c787f3ae4b03a14b08",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    }
+  ]
+}
