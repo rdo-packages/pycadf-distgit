@@ -4,6 +4,8 @@
 %global sname pycadf
 
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
+# we are excluding some BRs from automatic generator
+%global excluded_brs doc8 bandit pre-commit hacking flake8-import-order flake8-docstrings
 
 %global common_desc DMTF Cloud Audit (CADF) data model
 
@@ -13,7 +15,7 @@ Version:        XXX
 Release:        XXX
 Summary:        DMTF Cloud Audit (CADF) data model
 
-License:        ASL 2.0
+License:        Apache-2.0
 URL:            https://launchpad.net/pycadf
 Source0:        https://tarballs.openstack.org/%{sname}/%{sname}-%{upstream_version}.tar.gz
 # Required for tarball sources verification
@@ -36,17 +38,9 @@ BuildRequires:  openstack-macros
 
 %package -n python3-%{sname}
 Summary:        DMTF Cloud Audit (CADF) data model
-%{?python_provide:%python_provide python3-%{sname}}
 
 BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-pbr
-
-Requires:       python3-debtcollector >= 1.2.0
-Requires:       python3-oslo-config >= 2:5.2.0
-Requires:       python3-oslo-serialization >= 2.18.0
-Requires:       python3-pytz
-Requires:       python3-six >= 1.10.0
+BuildRequires:  pyproject-rpm-macros
 Requires:       python-%{sname}-common = %{version}-%{release}
 
 %description -n python3-%{sname}
@@ -54,7 +48,6 @@ Requires:       python-%{sname}-common = %{version}-%{release}
 
 %package -n python-%{sname}-common
 Summary:        DMTF Cloud Audit (CADF) data model
-%{?python_provide:%python_provide python-%{sname}-common}
 
 %description -n python-%{sname}-common
 %{common_desc}
@@ -70,12 +63,29 @@ Summary:        DMTF Cloud Audit (CADF) data model
 rm -rf %{sname}.egg-info
 
 
+sed -i /^[[:space:]]*-c{env:.*_CONSTRAINTS_FILE.*/d tox.ini
+sed -i "s/^deps = -c{env:.*_CONSTRAINTS_FILE.*/deps =/" tox.ini
+sed -i /^minversion.*/d tox.ini
+sed -i /^requires.*virtualenv.*/d tox.ini
+
+# Exclude some bad-known BRs
+for pkg in %{excluded_brs};do
+  for reqfile in doc/requirements.txt test-requirements.txt; do
+    if [ -f $reqfile ]; then
+      sed -i /^${pkg}.*/d $reqfile
+    fi
+  done
+done
+
+%generate_buildrequires
+%pyproject_buildrequires -t -e %{default_toxenv}
+
 %build
-%{py3_build}
+%pyproject_wheel
 
 
 %install
-%{py3_install}
+%pyproject_install
 
 mkdir -p %{buildroot}/%{_sysconfdir}
 mv %{buildroot}/usr/etc/%{sname} %{buildroot}/%{_sysconfdir}/
@@ -83,7 +93,7 @@ mv %{buildroot}/usr/etc/%{sname} %{buildroot}/%{_sysconfdir}/
 
 %files -n python3-%{sname}
 %{python3_sitelib}/%{sname}
-%{python3_sitelib}/%{sname}-%{upstream_version}-py%{python3_version}.egg-info
+%{python3_sitelib}/%{sname}-%{upstream_version}-py%{python3_version}.dist-info
 
 %files -n python-%{sname}-common
 %doc README.rst
