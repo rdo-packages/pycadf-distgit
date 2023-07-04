@@ -50,6 +50,24 @@
       "message": "there is no \"with_doc\" so sphinx and openstackdoctheme can be added",
       "revId": "ce57bbc8a1e30f3a08915fc0f393d831dda7d5a5",
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27fdd3e8_1a88a74a",
+        "filename": "python-pycadf.spec",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 635
+      },
+      "writtenOn": "2023-07-04T14:35:11Z",
+      "side": 1,
+      "message": "Good point, fixed in last PS",
+      "parentUuid": "e9bdd9db_f0330525",
+      "revId": "ce57bbc8a1e30f3a08915fc0f393d831dda7d5a5",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
     }
   ]
 }
