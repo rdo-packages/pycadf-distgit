@@ -11,8 +11,8 @@
 
 
 Name:           python-%{sname}
-Version:        XXX
-Release:        XXX
+Version:        3.1.1
+Release:        2%{?dist}
 Summary:        DMTF Cloud Audit (CADF) data model
 
 License:        Apache-2.0
@@ -103,3 +103,6 @@ mv %{buildroot}/usr/etc/%{sname} %{buildroot}/%{_sysconfdir}/
 
 
 %changelog
+* Fri Mar 15 2024 RDO <dev@lists.rdoproject.org> 3.1.1-2
+- Rebuild 3.1.1 in Caracal
+
