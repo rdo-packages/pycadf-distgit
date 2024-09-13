@@ -11,8 +11,8 @@
 
 
 Name:           python-%{sname}
-Version:        XXX
-Release:        XXX
+Version:        victoria-em
+Release:        1%{?dist}
 Summary:        DMTF Cloud Audit (CADF) data model
 
 License:        Apache-2.0
@@ -103,3 +103,6 @@ mv %{buildroot}/usr/etc/%{sname} %{buildroot}/%{_sysconfdir}/
 
 
 %changelog
+* Wed Sep 18 2024 RDO <dev@lists.rdoproject.org> victoria-em-1
+- Update to victoria-em
+
